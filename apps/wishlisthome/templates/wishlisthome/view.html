@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>view</title>
+    {% load staticfiles%}
+    <link rel="stylesheet" href="{% static 'wishlisthome/index.css'%}">
+  </head>
+  <body>
+    <div id="header">
+      <div class="headerL">
+        <h1>{{items.item}}</h1>
+      </div>
+
+        <a href="{% url 'wishlist:my_w_home'%}">home</a>
+
+    </div>
+    <p>Users who added this product/item under their wish list</p>
+      {% for user in items.likeditems.all %}
+        {{items.user.first_name}}
+      {% endfor%}
+    <a href="{% url 'wishlist:my_w_logout'%}">logout</a>  
+  </body>
+</html>

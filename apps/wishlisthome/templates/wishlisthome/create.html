@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>create</title>
+    {% load staticfiles%}
+    <link rel="stylesheet" href="{% static 'wishlisthome/index.css'%}">
+  </head>
+  <body>
+    <div id="header">
+      <div id="headerL">
+        <h1>Create a new wish list item</h1>
+      </div>
+      <div id="headerR">
+        <a href="{% url 'wishlist:my_w_home'%}">home</a>
+      </div>
+      <div id="body">
+        {% if messages %}
+          {% for message in messages %}
+            {{message}}<br>
+          {% endfor %}
+        {% endif %}
+        <form  action="{% url 'wishlist:my_w_update'%}" method="post">
+          {% csrf_token %}
+          <div id="bodyT">
+              Item/Product: <input type="text" name="item" value="">
+          </div>
+          <div id="button">
+            <input type="submit" name="" value="add">
+          </div>
+          <a href="{% url 'wishlist:my_w_logout'%}">logout</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
